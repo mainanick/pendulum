@@ -16,11 +16,9 @@ pip-log.txt
 .coverage
 .tox
 nosetests.xml
-.pytest_cache
 
 .DS_Store
 .idea/*
-.python-version
 
 /test.py
 /test_*.*
@@ -29,11 +27,3 @@ benchmark.py
 results.json
 profile.html
 /wheelhouse
-/docs/site/*
-pyproject.lock
-/poetry.lock
-setup.py
-
-# editor
-
-.vscode

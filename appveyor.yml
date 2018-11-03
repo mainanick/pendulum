@@ -4,30 +4,26 @@ environment:
   matrix:
     - PYTHON: "C:/Python27"
     - PYTHON: "C:/Python27-x64"
-    - PYTHON: "C:/Python36"
-    - PYTHON: "C:/Python36-x64"
-
-cache:
-  - '%LocalAppData%\pip\Cache'
-  - '%LocalAppData%\pypoetry\Cache'
-
+    - PYTHON: "C:/Python33"
+    - PYTHON: "C:/Python33-x64"
+    - PYTHON: "C:/Python34"
+    - PYTHON: "C:/Python34-x64"
+    - PYTHON: "C:/Python35"
+    - PYTHON: "C:/Python35-x64"
 
 install:
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
   # Upgrade to the latest version of pip to avoid it displaying warnings
   # about it being out of date.
-  - "python -m pip install --disable-pip-version-check --user --upgrade pip"
-
-  # Downloading and installing poetry
-  - python -m pip install poetry -U
+  - "pip install --disable-pip-version-check --user --upgrade pip"
 
   # Install dependencies
-  - python -m pip install codecov
-  - poetry install -v
+  - "%CMD_IN_ENV% pip install -r tests-requirements.txt"
+  - "%CMD_IN_ENV% pip install codecov"
 
 test_script:
-  - "poetry run pytest --cov=pendulum --cov-config=.coveragerc tests/ -W ignore"
+  - "py.test --cov=pendulum --cov-config=.coveragerc tests/"
 
 after_test:
   - "codecov"

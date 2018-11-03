@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
 from .parsing.exceptions import ParserError
 
 
-class PendulumException(Exception):
+class PendulumException(BaseException):
 
     pass
